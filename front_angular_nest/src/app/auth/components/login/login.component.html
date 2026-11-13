@@ -1,0 +1,74 @@
+<main class="surface-ground flex align-items-center justify-content-center min-h-screen p-3">
+  <div class="login-container flex flex-column align-items-center justify-content-center">
+    <img
+      src="assets/layout/images/logo-dark.svg"
+      alt="Sakai"
+      class="login-logo mb-5"
+    >
+
+    <div class="login-card-frame w-full">
+      <section class="surface-card login-card">
+        <header class="text-center mb-5">
+          <img
+            src="assets/demo/images/login/avatar.png"
+            alt=""
+            height="50"
+            class="mb-3"
+          >
+          <h1 class="text-900 text-3xl font-medium mb-3">Bienvenido</h1>
+          <p class="text-600 font-medium m-0">Inicia sesión para continuar</p>
+        </header>
+
+        <form [formGroup]="loginForm" (ngSubmit)="funIngresar()" novalidate>
+          <label for="email" class="block text-900 text-xl font-medium mb-2">Correo</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            pInputText
+            autocomplete="username"
+            placeholder="Correo electrónico"
+            class="w-full p-3 mb-2"
+            [attr.aria-invalid]="loginForm.controls.email.invalid && loginForm.controls.email.touched"
+          >
+          <small
+            *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"
+            class="block p-error mb-4"
+          >
+            Ingresa un correo electrónico válido.
+          </small>
+
+          <label for="password" class="block text-900 text-xl font-medium mb-2">Contraseña</label>
+          <p-password
+            inputId="password"
+            formControlName="password"
+            autocomplete="current-password"
+            placeholder="Contraseña"
+            [toggleMask]="true"
+            [feedback]="false"
+            styleClass="w-full mb-2"
+            inputStyleClass="w-full p-3"
+            [inputStyle]="{ width: '100%' }"
+          ></p-password>
+          <small
+            *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"
+            class="block p-error mb-4"
+          >
+            La contraseña debe tener entre 6 y 25 caracteres.
+          </small>
+
+          <p *ngIf="errorMessage" class="p-error mb-4" role="alert">{{ errorMessage }}</p>
+
+          <button
+            pButton
+            pRipple
+            type="submit"
+            [label]="isSubmitting ? 'Ingresando...' : 'Ingresar'"
+            [disabled]="loginForm.invalid || isSubmitting"
+            class="w-full p-3 text-xl"
+          ></button>
+        </form>
+      </section>
+    </div>
+  </div>
+</main>

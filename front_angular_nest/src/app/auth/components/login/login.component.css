@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.login-logo {
+  width: 9rem;
+  flex-shrink: 0;
+}
+
+.login-card-frame {
+  border-radius: 56px;
+  padding: 0.3rem;
+  background: linear-gradient(180deg, var(--primary-color) 10%, rgb(33 150 243 / 0%) 30%);
+}
+
+.login-card {
+  border-radius: 53px;
+  padding: 3rem 2rem;
+}
+
+@media (max-width: 575px) {
+  .login-card {
+    padding: 2rem 1.25rem;
+  }
+}
